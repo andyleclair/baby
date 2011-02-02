@@ -17,7 +17,7 @@ SYNTAX
 			def self.run!(*args)
 				case args.length
 					when 2
-						Baby::Got::Bach::Generator.run!(*args)
+						Generator.run!(*args)
 					else
 						puts @syntax
 				end

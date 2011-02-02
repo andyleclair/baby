@@ -1,7 +1,7 @@
-Software Dev
-============
+Software Dev :: Baby Got Bach
+=============================
 
-Andy LeClair
-------------
+A serious-ass project by Andy LeClair
+-------------------------------------
 
-A program to generate some dang music
+Baby is program to generate some dang site-reading music
