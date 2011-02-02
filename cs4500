@@ -2,6 +2,6 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
 
-require 'babygotbach'
+require 'baby'
 
-exit BabyGotBach.run!(*ARGV)
+exit Baby::Got::Bach.run!(*ARGV)
