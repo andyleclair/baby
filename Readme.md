@@ -12,7 +12,7 @@ Run Baby with the following command:
 
 No compilation or whatever, we've got RUBY, DOGG!
 
-This will produce 20 bars of violin music
+This will produce 16 bars of violin music
 
 Running Baby with any other parameters will produce the syntax overview:
 
