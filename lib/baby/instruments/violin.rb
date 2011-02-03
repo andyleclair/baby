@@ -9,5 +9,7 @@ class Violin < Instrument
 	FULL_RANGE = LO_RANGE.concat(MID_RANGE).concat(HI_RANGE)
 
 	CLEF = 'treble'
+	
+	NAME = 'Violin'
 
 end

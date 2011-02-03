@@ -9,6 +9,8 @@ class Instrument
 
 	CLEF = 'treble'
 
+	NAME = 'derp!'
+
 	def self.range(range= :full)
 		case range
 			when 'low'
@@ -23,15 +25,11 @@ class Instrument
 	end
 
 	def self.generate(params = {})
-		notes_per_bar = params[:time].chars.to_a[0].to_i
+		notes_per_bar = params[:time][0].chr.to_i
 		bars = params[:bars].to_i
 		notes = notes_per_bar * bars
 		score = ""
 		current_range = range(params[:range])
-
-		puts notes_per_bar
-		puts bars
-		puts notes
 
 		notes.times do |num|
 			score << current_range[rand(current_range.length)] << " "
