@@ -1,9 +1,15 @@
-class Baby
-	class Got
-		class Bach
-			class LilyPond
+class LilyPond
+	VERSION = "2.12.2"
 
-			end
-		end
+	def self.create_doc(params, instrument)
+		<<DOC
+{
+	\\version "#{ VERSION }"
+	\\time #{ params[:time] }
+	\\clef #{ instrument::CLEF }
+	#{ instrument.range(params[:range]).join " " }
+}
+DOC
 	end
+
 end

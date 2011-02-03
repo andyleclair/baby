@@ -3,29 +3,25 @@ class Generator
 	DEFAULTS = {
 		:instrument => 'violin',
 		:complexity => 20,
-		:key => 'CMaj',
-		:bars => 10,
-		:tempo => 90,
-		:style => 'classical',
-		:range => 'middle'
+		:key 		=> 'CMaj',
+		:bars 	=> 10,
+		:tempo 	=> 90,
+		:style 	=> 'classical',
+		:range 	=> 'full',
+		:time		=> '4/4'
 	}
 
 	def self.run!(*args)
 		inname, outname = args
-		infile, outfile = [nil, nil]
-
-		if File.exists?(outname)
-			File.delete(outname)
-		end
 		
-		outfile = File.new(outname, 'w+')
-
-		generate!(outfile)
+		generate!(outname)
 	end
 
 	def self.generate!(outfile)
 		classname = DEFAULTS[:instrument].to_s.capitalize
 		instrument = Kernel.const_get(classname)
-		puts instrument::MID_RANGE
+		File.open(outfile, 'w') do |f|
+			f.write LilyPond::create_doc(DEFAULTS, instrument)
+		end
 	end
 end
