@@ -24,6 +24,8 @@ class Generator
 	end
 
 	def self.generate!(outfile)
-		
+		classname = DEFAULTS[:instrument].to_s.capitalize
+		instrument = Kernel.const_get(classname).new
+		puts instrument.mid_range
 	end
 end
