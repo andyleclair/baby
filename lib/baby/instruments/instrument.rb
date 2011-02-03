@@ -11,14 +11,32 @@ class Instrument
 
 	def self.range(range= :full)
 		case range
-			when :low
+			when 'low'
 				self::LO_RANGE
-			when :mid
+			when 'mid'
 				self::MID_RANGE
-			when :high
+			when 'high'
 				self::HI_RANGE
 			else
 				self::FULL_RANGE
 			end
+	end
+
+	def self.generate(params = {})
+		notes_per_bar = params[:time].chars.to_a[0].to_i
+		bars = params[:bars].to_i
+		notes = notes_per_bar * bars
+		score = ""
+		current_range = range(params[:range])
+
+		puts notes_per_bar
+		puts bars
+		puts notes
+
+		notes.times do |num|
+			score << current_range[rand(current_range.length)] << " "
+		end
+
+		score
 	end
 end

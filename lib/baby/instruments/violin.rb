@@ -10,5 +10,4 @@ class Violin < Instrument
 
 	CLEF = 'treble'
 
-
 end

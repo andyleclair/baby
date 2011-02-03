@@ -4,10 +4,10 @@ class Generator
 		:instrument => 'violin',
 		:complexity => 20,
 		:key 		=> 'CMaj',
-		:bars 	=> 10,
+		:bars 	=> 16,
 		:tempo 	=> 90,
 		:style 	=> 'classical',
-		:range 	=> 'full',
+		:range 	=> 'mid',
 		:time		=> '4/4'
 	}
 

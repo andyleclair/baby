@@ -7,7 +7,7 @@ class LilyPond
 	\\version "#{ VERSION }"
 	\\time #{ params[:time] }
 	\\clef #{ instrument::CLEF }
-	#{ instrument.range(params[:range]).join " " }
+	#{ instrument.generate(params) }
 }
 DOC
 	end
