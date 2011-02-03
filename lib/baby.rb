@@ -1,5 +1,6 @@
 require 'baby/generator'
 require 'baby/lilypond'
+require 'baby/instruments/instrument'
 require 'baby/instruments/violin'
 
 class Baby

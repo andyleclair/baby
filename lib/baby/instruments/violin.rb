@@ -1,4 +1,4 @@
-class Violin
+class Violin < Instrument
 
 	LO_NOTE = 'g'
 	HI_NOTE = "e'''"
@@ -10,17 +10,5 @@ class Violin
 
 	CLEF = 'treble'
 
-	def self.range(range= :full)
-		case range
-			when :low
-				LO_RANGE
-			when :mid
-				MID_RANGE
-			when :high
-				HI_RANGE
-			else
-				FULL_RANGE
-			end
-	end
 
 end
