@@ -17,7 +17,7 @@ This will produce 16 bars of violin music
 Running Baby with any other parameters will produce the syntax overview:
 
 Baby Got Bach:
-	usage: ./cs4500 <input doc> <output filename>
+	usage: ./c4500 <input doc> <output filename>
 
 Currently, the input doc is TOTES IGNORED, BRO
 
