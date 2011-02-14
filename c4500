@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'vendor')
 
 require 'baby'
+require 'treetop'
 
 exit Baby::Got::Bach.run!(*ARGV)
