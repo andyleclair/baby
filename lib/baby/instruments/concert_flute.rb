@@ -1,0 +1,3 @@
+class ConcertFlute < Instrument
+
+end
