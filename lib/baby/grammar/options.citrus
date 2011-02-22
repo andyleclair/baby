@@ -8,7 +8,7 @@ grammar Options
 	end
 
 	rule time_spec
-		empty | whitespace "time signature:" whitespace int "\" int whitespace ls
+		empty | whitespace "time signature:" whitespace int '/' int whitespace ls
 	end
 
 	rule key_spec
