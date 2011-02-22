@@ -1,7 +1,10 @@
+# Load all instruments files in the instruments directory
+Dir[File.join('lib', 'baby', 'instruments', '*.rb')].each {|instr| load instr} 
+
 require 'baby/generator'
 require 'baby/lilypond'
-require 'baby/instruments/instrument'
-require 'baby/instruments/violin'
+require 'treetop'
+require 'treetop/options'
 
 class Baby
 	class Got

@@ -13,7 +13,7 @@ class Generator
 
 	def self.run!(*args)
 		inname, outname = args
-		
+		parse_options(inname)	
 		generate!(outname)
 	end
 
@@ -23,5 +23,10 @@ class Generator
 		File.open(outfile, 'w') do |f|
 			f.write LilyPond::create_doc(DEFAULTS, instrument)
 		end
+	end
+
+	def self.parse_options(filename)
+		raw_options = IO.read(filename)
+		puts raw_options
 	end
 end
