@@ -1,0 +1,3 @@
+class Bassoon < Instrument
+
+end

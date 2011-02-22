@@ -1,0 +1,3 @@
+class AltoRecorder < Instrument
+
+end

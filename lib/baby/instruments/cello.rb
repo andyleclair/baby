@@ -1,0 +1,3 @@
+class Cello < Instrument
+
+end
