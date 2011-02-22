@@ -5,7 +5,7 @@ Dir[File.join('lib', 'baby', 'instruments', '*.rb')].each {|instr| load instr}
 
 require 'baby/generator'
 require 'baby/lilypond'
-require_all 'vendor/treetop'
+require_all 'vendor/citrus'
 require 'baby/grammar/options'
 
 class Baby
