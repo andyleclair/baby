@@ -1,5 +1,4 @@
 # Load all instruments files in the instruments directory
-require 'require_all'
 require 'baby/instrument'
 Dir[File.join('lib', 'baby', 'instruments', '*.rb')].each {|instr| load instr} 
 
@@ -15,8 +14,6 @@ class Baby
 
 Baby Got Bach:
 	usage: ./cs4500 <input doc> <output filename>
-
-Currently, the input doc is TOTES IGNORED, BRO
 
 			SYNTAX
 
