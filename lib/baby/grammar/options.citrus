@@ -4,47 +4,47 @@ grammar Options
 	end
 
 	rule instrument_spec
-		empty / whitespace "instrument:" whitespace instr whitespace ls
+		empty | whitespace "instrument:" whitespace instr whitespace ls
 	end
 
 	rule time_spec
-		empty / whitespace "time signature:" whitespace int "/" int whitespace ls
+		empty | whitespace "time signature:" whitespace int "\" int whitespace ls
 	end
 
 	rule key_spec
-		empty / whitespace "key:" whitespace key whitespace ls
+		empty | whitespace "key:" whitespace key whitespace ls
 	end
 
 	rule length_spec
-		empty / whitespace "length:" whitespace int whitespace ls
+		empty | whitespace "length:" whitespace int whitespace ls
 	end
 
 	rule instr
-		"soprano recorder" /  "alto recorder" / "concert flute" / "oboe" / "bassoon" / "violin" / "cello" / "guitar" / "piano"
+		"soprano recorder" |  "alto recorder" | "concert flute" | "oboe" | "bassoon" | "violin" | "cello" | "guitar" | "piano"
 	end
 
 	rule key
-		pitch / pitch whitespace "major" / pitch whitespace "minor"
+		pitch | pitch whitespace "major" | pitch whitespace "minor"
 	end
 
 	rule pitch
-		"Ab"  /  "A"  /  "A#"  /  "Bb"  /  "B"  /  "B#" /  "Cb"  /  "C"  /  "C#"  /  "Db"  /  "D"  /  "D#" /  "Eb"  /  "E"  /  "E#"  /  "Fb"  /  "F"  /  "F#" /  "Gb"  /  "G"  /  "G#"
+		"Ab"  |  "A"  |  "A#"  |  "Bb"  |  "B"  |  "B#" |  "Cb"  |  "C"  |  "C#"  |  "Db"  |  "D"  |  "D#" |  "Eb"  |  "E"  |  "E#"  |  "Fb"  |  "F"  |  "F#" |  "Gb"  |  "G"  |  "G#"
 	end
 
 	rule int
-		digit / digit int
+		digit | digit int
 	end
 
 	rule digit
-		"0"  /  "1"  /  "2"  /  "3"  /  "4"  /  "5" /  "6"  /  "7"  /  "8"  /  "9"
+		"0"  |  "1"  |  "2"  |  "3"  |  "4"  |  "5" |  "6"  |  "7"  |  "8"  |  "9"
 	end
 
 	rule whitespace
-		empty / "\x20" whitespace
+		empty | "\x20" whitespace
 	end
 
 	rule ls
-		"\x10" / "\x13" / "\x13\x10"
+		"\x10" | "\x13" | "\x13\x10"
 	end
 
 	rule empty
