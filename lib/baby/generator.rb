@@ -27,7 +27,11 @@ class Generator
 
 	def self.parse_options(filename)
 		raw_options = IO.read(filename)
-		puts raw_options
 		Citrus.load 'lib/baby/grammar/options'
+		opts = Options.parse raw_options
+		puts opts.instrument.value
+		puts opts.time.value
+		puts opts.key.value
+		puts opts.length.value
 	end
 end

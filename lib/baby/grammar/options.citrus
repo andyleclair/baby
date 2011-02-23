@@ -1,30 +1,38 @@
 grammar Options
 	rule input
-		instrument_spec	time_spec	key_spec length_spec
+		instrument?	time?	key? length?
 	end
 
-	rule instrument_spec
-		empty | whitespace "instrument:" whitespace instr whitespace ls
+	rule instrument
+		(whitespace "instrument:" whitespace instr whitespace ls) {
+			instr.to_s
+		}
 	end
 
-	rule time_spec
-		empty | whitespace "time signature:" whitespace int '/' int whitespace ls
+	rule time
+		(whitespace "time signature:" whitespace int '/' int1:int whitespace ls) {
+			"#{ int.value }/#{ int1.value }"
+		}
 	end
 
-	rule key_spec
-		empty | whitespace "key:" whitespace key whitespace ls
+	rule key
+		(whitespace "key:" whitespace key_imp whitespace ls) {
+			key_imp.to_s
+		}
 	end
 
-	rule length_spec
-		empty | whitespace "length:" whitespace int whitespace ls
+	rule length
+		(whitespace "length:" whitespace int whitespace ls) {
+			int.value
+		}
 	end
 
 	rule instr
 		"soprano recorder" |  "alto recorder" | "concert flute" | "oboe" | "bassoon" | "violin" | "cello" | "guitar" | "piano"
 	end
 
-	rule key
-		pitch | pitch whitespace "major" | pitch whitespace "minor"
+	rule key_imp
+		pitch whitespace "major" | pitch whitespace "minor" | pitch
 	end
 
 	rule pitch
@@ -32,22 +40,16 @@ grammar Options
 	end
 
 	rule int
-		digit | digit int
-	end
-
-	rule digit
-		"0"  |  "1"  |  "2"  |  "3"  |  "4"  |  "5" |  "6"  |  "7"  |  "8"  |  "9"
+		([0-9]+) {
+			to_i
+		}
 	end
 
 	rule whitespace
-		empty | "\x20" whitespace
+		[ ]*
 	end
 
 	rule ls
-		"\x10" | "\x13" | "\x13\x10"
-	end
-
-	rule empty
-		""
+		"\n" | "\r" | "\r\n"
 	end
 end
