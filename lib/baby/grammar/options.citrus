@@ -1,6 +1,6 @@
 grammar Options
 	rule input
-		instrument?	time?	key? length?
+		instrument?	time?	key? num_bars?
 	end
 
 	rule instrument
@@ -21,9 +21,9 @@ grammar Options
 		}
 	end
 
-	rule length
+	rule num_bars
 		(whitespace "length:" whitespace int whitespace ls) {
-			int.value
+			int
 		}
 	end
 

@@ -32,6 +32,6 @@ class Generator
 		puts opts.instrument.value
 		puts opts.time.value
 		puts opts.key.value
-		puts opts.length.value
+		puts opts.num_bars.value
 	end
 end
