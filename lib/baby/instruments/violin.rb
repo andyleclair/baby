@@ -1,7 +1,7 @@
 class Violin < Instrument
 
 	LO_NOTE = 'g'
-	HI_NOTE = "e'''"
+	HI_NOTE = "e''''"
 
 	LO_RANGE 	= %w{ g a b c' d' e' f' g' }
 	MID_RANGE = %w{ g' a' b' c'' d'' e'' f'' g'' }
