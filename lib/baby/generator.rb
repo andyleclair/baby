@@ -35,7 +35,8 @@ class Generator
 										:key				=> opts.key.value,
 										:bars				=> opts.num_bars.value }
 			DEFAULTS.merge hash_opts
-		rescue
+		rescue Citrus::ParseError => e
+			puts "WARNING!!!  Parsing error at line #{ e.line_number }, position #{ e.line_offset }, using default value"
 			DEFAULTS
 		end
 	end
