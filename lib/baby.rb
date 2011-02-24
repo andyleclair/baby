@@ -13,7 +13,7 @@ class Baby
 			SYNTAX = <<-SYNTAX
 
 Baby Got Bach:
-	usage: ./cs4500 <input doc> <output filename>
+	usage: ./c4500 <input doc> <output filename>
 
 			SYNTAX
 
