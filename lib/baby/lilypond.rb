@@ -15,6 +15,7 @@ class LilyPond
 	\\tempo 4 = #{ params[:tempo] }
 	\\time #{ params[:time] }
 	\\clef #{ instrument::CLEF }
+	\\key #{ params[:key][:key] } \\#{ params[:key][:mode] }
 	#{ instrument.generate(params) } 
 }
 DOC
