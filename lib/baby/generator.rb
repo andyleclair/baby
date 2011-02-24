@@ -1,10 +1,10 @@
 class Generator
 
 	DEFAULTS = {
-		:instrument => 'violin',
+		:instrument => 'soprano recorder',
 		:complexity => 20,
 		:key 		=> 'CMaj',
-		:bars 	=> 16,
+		:bars 	=> 32,
 		:tempo 	=> 90,
 		:style 	=> 'classical',
 		:range 	=> 'mid',
