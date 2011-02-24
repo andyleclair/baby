@@ -14,13 +14,28 @@ class Piano < Instrument
 	o8 = %w{ c''''' }
 
 	LO_RANGE = o0.concat(o1)
-	MID_RANGE = o2.concat(o3).concat(o4)
-	HI_RANGE = o5.concat(o6).concat(o7).concat(o8)
+	MID_RANGE = o3.concat(o4).concat(o5)
+	HI_RANGE = o6.concat(o7).concat(o8)
 	
 	FULL_RANGE = LO_RANGE.concat(MID_RANGE).concat(HI_RANGE)
 		
 	NAME = 'Piano'
 	
-	CLEF = 'piano'
+	def self.generate(params = {})
+		treb_notes = generate_notes(params.merge({:range => 'mid'}))
+		bass_notes = generate_notes(params.merge({:range => 'low'}))
+
+		<<PIANO
+\\new PianoStaff <<
+	\\new Staff { 
+	#{ treb_notes  } 
+	}
+	\\new Staff { 
+	\\clef bass 
+	#{ bass_notes } 
+	}
+>>
+PIANO
+	end
 
 end
