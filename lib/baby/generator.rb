@@ -4,7 +4,7 @@ class Generator
 		:instrument => 'soprano recorder',
 		:complexity => 20,
 		:key 		=> 'C Major',
-		:bars 	=> 16,
+		:bars 	=> 32,
 		:tempo 	=> 90,
 		:style 	=> 'classical',
 		:range 	=> 'mid',
