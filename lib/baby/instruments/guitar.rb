@@ -1,6 +1,6 @@
 class Guitar < Instrument
 
-	LO_NOTE = 'e'
+	LO_NOTE = "e"
 	HI_NOTE = "e'''"
 
 	LO_RANGE 	= %w{ e f g a b c' d' e' }

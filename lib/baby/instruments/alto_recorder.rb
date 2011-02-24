@@ -1,6 +1,6 @@
 class AltoRecorder < Instrument
 
-	LO_NOTE = 'f'
+	LO_NOTE = "f"
 	HI_NOTE = "g''"
 
 	LO_RANGE 	= %w{ f g a b c' d' e' f' }

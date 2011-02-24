@@ -1,6 +1,6 @@
 class Bassoon < Instrument
 
-	LO_NOTE = 'b,,'
+	LO_NOTE = "b,,"
 	HI_NOTE = "e''"
 
 	LO_RANGE 	= %w{ b,, c, d, e, f, g, a, b, }
