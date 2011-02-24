@@ -24,7 +24,7 @@ class Instrument
 			end
 	end
 
-	def self.generate(params = {})
+	def self.generate_notes(params = {})
 		notes_per_bar = params[:time][0].chr.to_i
 		bars = params[:bars].to_i
 		notes = notes_per_bar * bars
