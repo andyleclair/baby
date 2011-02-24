@@ -1,6 +1,6 @@
 class Cello < Instrument
 
-	LO_NOTE = 'c,'
+	LO_NOTE = "c,"
 	HI_NOTE = "c'''"
 
 	LO_RANGE 	= %w{ c, d, e, f, g, a, b, c }

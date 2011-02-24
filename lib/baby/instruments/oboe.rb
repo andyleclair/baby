@@ -1,6 +1,6 @@
 class Oboe < Instrument
 
-	LO_NOTE = 'b'
+	LO_NOTE = "b"
 	HI_NOTE = "a'''"
 
 	LO_RANGE 	= %w{ b c' d' e' f' g' a' b' }
