@@ -28,12 +28,12 @@ class Generator
 	def self.parse_options(filename)
 		begin
 			raw_options = IO.read(filename)
-			Citrus.load 'lib/baby/grammar/options'
+			Citrus.load 'lib/baby/grammar/options.citrus'
 			opts = Options.parse raw_options
 			hash_opts = {	:instrument => opts.instrument.value,
 										:time 			=> opts.time.value,
 										:key				=> opts.key.value,
-										:length			=> opts.num_bars.value }
+										:bars			=> opts.num_bars.value }
 			DEFAULTS.merge hash_opts
 		rescue
 			DEFAULTS

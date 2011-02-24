@@ -32,7 +32,10 @@ class Instrument
 		current_range = range(params[:range])
 
 		notes.times do |num|
-			score << current_range[rand(current_range.length)] << " "
+			score << "" << current_range[rand(current_range.length)] << " "
+			if (num + 1) % notes_per_bar == 0 
+				score << "\n\t"
+			end
 		end
 
 		score
