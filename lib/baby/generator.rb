@@ -34,12 +34,15 @@ class Generator
 			key_hash = { :key => key_arr[0].downcase, :mode => key_arr[1] }
 			hash_opts = {	:instrument => opts.instrument.value,
 										:time 			=> opts.time.value,
-										:key				=> key_hash,
+										:key                            => key_hash,
 										:bars				=> opts.num_bars.value }
 			DEFAULTS.merge hash_opts
 		rescue Citrus::ParseError => e
-			puts "WARNING!!!  Parsing error at line #{ e.line_number }, position #{ e.line_offset }"
-			puts "Using default value instead of #{ e.line }"
+			puts "Error: could not parse input file `#{ filename }':\n"
+			puts e.detail()
+			puts "(line #{ e.line_number }, position #{ e.line_offset })"
+			puts "\nDefault parameters will be used instead."
+
 			DEFAULTS
 		end
 	end
