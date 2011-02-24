@@ -1,9 +1,9 @@
 class Generator
 
 	DEFAULTS = {
-		:instrument => 'violin',
+		:instrument => 'soprano recorder',
 		:complexity => 20,
-		:key 		=> 'CMaj',
+		:key 		=> 'C Major',
 		:bars 	=> 16,
 		:tempo 	=> 90,
 		:style 	=> 'classical',
@@ -33,7 +33,7 @@ class Generator
 			hash_opts = {	:instrument => opts.instrument.value,
 										:time 			=> opts.time.value,
 										:key				=> opts.key.value,
-										:bars			=> opts.num_bars.value }
+										:bars				=> opts.num_bars.value }
 			DEFAULTS.merge hash_opts
 		rescue
 			DEFAULTS
