@@ -18,12 +18,15 @@ class Piano < Instrument
 	HI_RANGE  = o6 + o7 + o8
 	
 	FULL_RANGE = LO_RANGE + MID_RANGE + HI_RANGE
+	
+	BASIC_BASS = o2 + o3
+	BASIC_TREB = o4 + o5
 		
 	NAME = 'Piano'
 	
 	def self.generate(params = {})
-		treb_notes = generate_notes(params.merge({:notes => MID_RANGE}))
-		bass_notes = generate_notes(params.merge({:notes => LO_RANGE}))
+		treb_notes = generate_notes(params.merge({:notes => BASIC_TREB}))
+		bass_notes = generate_notes(params.merge({:notes => BASIC_BASS}))
 
 		<<PIANO
 \\new PianoStaff <<
