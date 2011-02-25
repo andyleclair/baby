@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+load 'test/test_runner.rb'
