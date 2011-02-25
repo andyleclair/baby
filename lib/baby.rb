@@ -13,33 +13,38 @@ class Baby
     
             options = {}
             optparse = OptionParser.new do|opts|
+			    opts.banner = "usage: #{ $0 } [options] <input> <output>"
                 options[:verbose] = false
                 opts.on('-v', '--verbose', 'Print debug information' ) do
                     option[:verbose] = true
                 end
-                opts.on('--set-instrument', 'Override instrument setting' ) do
-                    puts "blah"
+                opts.on('--set-instrument INSTRUMENT', 'Force `instrument\' parameter' ) do|instrument|
+                    option[:set-instrument] = instrument
                 end
-                opts.on('--set-key', 'Override key setting' ) do
-                    puts "blah"
+                opts.on('--set-timesig TIMESIG', 'Force `time signature\' parameter' ) do|timesig|
+                    option[:set-timesig] = timesig
                 end
+                opts.on('--set-key KEY', 'Force `key\' parameter' ) do|key|
+                    option[:set-key] = key
+                end
+                opts.on('--set-length LENGTH', 'Force `length\' parameter' ) do|length|
+                    option[:set-length] = length
+                end
+				opts.on('-h','--help','Display this screen') do
+				    puts opts
+					exit
+				end
             end
 
+			RUNSYNTAX = optparse.help()
             optparse.parse!
-
-            SYNTAX = <<-SYNTAX
-
-Baby Got Bach:
-    usage: #{ $0 } <input doc> <output filename>
-
-            SYNTAX
 
             def self.run!(*args)
                 case args.length
                     when 2
                         Generator.run!(*args)
                     else
-                        puts SYNTAX
+                        puts RUNSYNTAX
                 end
                 return 0
             end
