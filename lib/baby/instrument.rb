@@ -25,7 +25,7 @@ class Instrument
 	end
 
         def self.generate(params = {})
-				staff_header = self.staff_header()
+				staff_header = self.staff_header(params)
                 notes = generate_notes(params.merge({:notes => range(params[:range])}))
                 <<NOTES
 \\new Staff {
