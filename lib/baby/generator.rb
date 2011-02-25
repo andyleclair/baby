@@ -11,9 +11,19 @@ class Generator
         :time       => '4/4'
     }
 
-    def self.run!(*args)
+    def self.run!(copts = {}, *args)
         inname, outname = args
         options = parse_options(inname) 
+
+		override = lambda {|x, y|
+			options.store(x, copts[y]) if copts.key?(y)
+		}
+		
+		override.call(:instrument, :set_instrument)
+		override.call(:time, :set_timesig)
+		override.call(:bars, :set_length)
+		options.store(:key, parse_key(copts[:set_key])) if copts.key?(:set_key)
+		
         generate!(outname, options)
     end
 
@@ -35,11 +45,7 @@ class Generator
             parsed_opts.store(:instrument, opts.instrument.value) unless opts.instrument.nil?
             parsed_opts.store(:time, opts.time.value) unless opts.time.nil?
             parsed_opts.store(:bars, opts.num_bars.value) unless opts.num_bars.nil?
-            unless opts.key.nil?
-                key_arr = opts.key.value.split(' ')
-                key_hash = {:key => key_arr[0].downcase, :mode => key_arr[1]}
-                parsed_opts.store(:key, key_hash)
-            end
+			parsed_opts.store(:key, parse_key(opts.key.value)) unless opts.key.nil?
 
             DEFAULTS.merge parsed_opts
         rescue Citrus::ParseError => e
@@ -51,4 +57,9 @@ class Generator
             DEFAULTS
         end
     end
+	
+	def self.parse_key(keystr)
+		key_arr = keystr.split(' ')
+		{:key => key_arr[0].downcase, :mode => key_arr[1]}
+	end
 end

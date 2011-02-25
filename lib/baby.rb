@@ -11,24 +11,24 @@ class Baby
     class Got
         class Bach
     
-            options = {}
+            COPTS = {}
             optparse = OptionParser.new do|opts|
 			    opts.banner = "usage: #{ $0 } [options] <input> <output>"
-                options[:verbose] = false
+                COPTS[:verbose] = false
                 opts.on('-v', '--verbose', 'Print debug information' ) do
-                    option[:verbose] = true
+                    COPTS[:verbose] = true
                 end
                 opts.on('--set-instrument INSTRUMENT', 'Force `instrument\' parameter' ) do|instrument|
-                    option[:set-instrument] = instrument
+                    COPTS[:set_instrument] = instrument
                 end
                 opts.on('--set-timesig TIMESIG', 'Force `time signature\' parameter' ) do|timesig|
-                    option[:set-timesig] = timesig
+                    COPTS[:set_timesig] = timesig
                 end
                 opts.on('--set-key KEY', 'Force `key\' parameter' ) do|key|
-                    option[:set-key] = key
+                    COPTS[:set_key] = key
                 end
                 opts.on('--set-length LENGTH', 'Force `length\' parameter' ) do|length|
-                    option[:set-length] = length
+                    COPTS[:set_length] = length
                 end
 				opts.on('-h','--help','Display this screen') do
 				    puts opts
@@ -42,9 +42,10 @@ class Baby
             def self.run!(*args)
                 case args.length
                     when 2
-                        Generator.run!(*args)
+                        Generator.run!(COPTS, *args)
                     else
                         puts RUNSYNTAX
+						puts COPTS
                 end
                 return 0
             end
