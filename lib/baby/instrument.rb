@@ -29,7 +29,7 @@ class Instrument
                 notes = generate_notes(params.merge({:notes => range(params[:range])}))
                 <<NOTES
 \\new Staff {
-    \\clef #{ CLEF }
+    \\clef #{ self::CLEF }
 	#{ staff_header } 
     #{ notes }
 }
