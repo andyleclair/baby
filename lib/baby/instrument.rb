@@ -5,13 +5,13 @@ class Instrument
 	LO_RANGE 	= []
 	MID_RANGE = []
 	HI_RANGE  = []
-	FULL_RANGE = LO_RANGE.concat(MID_RANGE).concat(HI_RANGE)
+	FULL_RANGE = LO_RANGE + MID_RANGE + HI_RANGE
 
 	CLEF = 'treble'
 
 	NAME = 'derp!'
 
-	def self.range(range= :full)
+	def self.range(range = 'full')
 		case range
 			when 'low'
 				self::LO_RANGE
@@ -29,9 +29,7 @@ class Instrument
 		bars = params[:bars].to_i
 		notes = notes_per_bar * bars
 		score = ""
-		#current_range = range(params[:range])
-		current_range = self::LO_RANGE
-
+		current_range = range(params[:range])
 		notes.times do |num|
 			score << "" << current_range[rand(current_range.length)] << " "
 			if (num + 1) % notes_per_bar == 0 
