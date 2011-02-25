@@ -28,6 +28,7 @@ class Piano < Instrument
 		<<PIANO
 \\new PianoStaff <<
 	\\new Staff { 
+        \\clef treble
 	#{ treb_notes  } 
 	}
 	\\new Staff { 

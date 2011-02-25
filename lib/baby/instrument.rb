@@ -29,7 +29,8 @@ class Instrument
 		bars = params[:bars].to_i
 		notes = notes_per_bar * bars
 		score = ""
-		current_range = range(params[:range])
+		#current_range = range(params[:range])
+		current_range = self::LO_RANGE
 
 		notes.times do |num|
 			score << "" << current_range[rand(current_range.length)] << " "
