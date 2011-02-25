@@ -10,5 +10,5 @@ class AltoRecorder < Instrument
 
 	CLEF = 'tenor'
 	
-	NAME = 'AltoRecorder'
+	NAME = 'Alto Recorder'
 end

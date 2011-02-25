@@ -10,5 +10,5 @@ class SopranoRecorder < Instrument
 
 	CLEF = 'tenor'
 	
-	NAME = 'SopranoRecorder'
+	NAME = 'Soprano Recorder'
 end

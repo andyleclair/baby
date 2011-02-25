@@ -10,5 +10,5 @@ class ConcertFlute < Instrument
 
 	CLEF = 'treble'
 	
-	NAME = 'ConcertFlute'
+	NAME = 'Concert Flute'
 end
