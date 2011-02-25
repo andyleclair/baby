@@ -7,25 +7,25 @@ require 'baby/lilypond'
 require 'citrus'
 
 class Baby
-	class Got
-		class Bach
-	
-			SYNTAX = <<-SYNTAX
+    class Got
+        class Bach
+    
+            SYNTAX = <<-SYNTAX
 
 Baby Got Bach:
-	usage: ./c4500 <input doc> <output filename>
+    usage: ./c4500 <input doc> <output filename>
 
-			SYNTAX
+            SYNTAX
 
-			def self.run!(*args)
-				case args.length
-					when 2
-						Generator.run!(*args)
-					else
-						puts SYNTAX
-				end
-				return 0
-			end
-		end
-	end
+            def self.run!(*args)
+                case args.length
+                    when 2
+                        Generator.run!(*args)
+                    else
+                        puts SYNTAX
+                end
+                return 0
+            end
+        end
+    end
 end
