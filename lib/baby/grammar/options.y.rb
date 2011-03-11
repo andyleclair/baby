@@ -1,4 +1,4 @@
-class Optionsparser
+class OptionsParser
 
 	rule
 		input: instrument_spec time_spec key_spec length_spec difficulty_spec { result = val }
