@@ -6,6 +6,19 @@
 
 require 'racc/parser.rb'
 class OptionsParser < Racc::Parser
+
+module_eval(<<'...end options.y.rb/module_eval...', 'options.y.rb', 65)
+
+def parse(filename)
+	input = IO.readlines(filename)
+	@tokens = input
+	do_parse
+end
+
+def next_token
+	@tokens.shift
+end
+...end options.y.rb/module_eval...
 ##### State transition tables begin ###
 
 racc_action_table = [
@@ -43,15 +56,15 @@ racc_action_check = [
      4,    30,    81,    82,     3,     1,    31 ]
 
 racc_action_pointer = [
-    -2,   145,    -1,   142,    90,   138,    -4,    42,    86,   nil,
-   nil,    -3,   129,    82,   104,     0,   125,    79,    62,    87,
+   -41,   145,   -40,   103,    51,   138,   -43,     3,    47,   nil,
+   nil,   -42,    90,    43,    65,   -39,    86,    40,    23,    48,
    nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
-   134,    96,   -11,   126,    42,   nil,   nil,   nil,   nil,   nil,
-   nil,   nil,   nil,   nil,   nil,    70,    83,    52,    85,    32,
+    95,    57,   -50,    87,     3,   nil,   nil,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,   nil,    31,    44,    13,    46,    -7,
    nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
    nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
-   nil,   -11,   nil,   nil,   nil,   nil,   nil,    32,    89,   -47,
-   110,    92,    93,   -12,   nil,   nil,   nil,    -9,    73,   nil,
+   nil,   -50,   nil,   nil,   nil,   nil,   nil,    -7,    50,   -86,
+    71,    53,    54,   -51,   nil,   nil,   nil,   -48,    34,   nil,
    nil,   nil ]
 
 racc_action_default = [
@@ -98,67 +111,67 @@ racc_goto_default = [
 
 racc_reduce_table = [
   0, 0, :racc_error,
-  5, 55, :_reduce_1,
-  0, 56, :_reduce_none,
-  6, 56, :_reduce_3,
-  0, 57, :_reduce_4,
-  8, 57, :_reduce_5,
-  0, 58, :_reduce_6,
-  6, 58, :_reduce_7,
-  0, 59, :_reduce_8,
-  6, 59, :_reduce_9,
-  0, 60, :_reduce_10,
-  6, 60, :_reduce_11,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 62, :_reduce_none,
-  1, 65, :_reduce_none,
-  3, 65, :_reduce_none,
-  3, 65, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 66, :_reduce_none,
-  1, 64, :_reduce_none,
-  2, 64, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  1, 67, :_reduce_none,
-  0, 61, :_reduce_none,
-  2, 61, :_reduce_none,
-  1, 63, :_reduce_none,
-  1, 63, :_reduce_none,
-  1, 63, :_reduce_none ]
+  5, 94, :_reduce_1,
+  0, 95, :_reduce_none,
+  6, 95, :_reduce_3,
+  0, 96, :_reduce_4,
+  8, 96, :_reduce_5,
+  0, 97, :_reduce_6,
+  6, 97, :_reduce_7,
+  0, 98, :_reduce_8,
+  6, 98, :_reduce_9,
+  0, 99, :_reduce_10,
+  6, 99, :_reduce_11,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 101, :_reduce_none,
+  1, 104, :_reduce_none,
+  3, 104, :_reduce_none,
+  3, 104, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 105, :_reduce_none,
+  1, 103, :_reduce_none,
+  2, 103, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  1, 106, :_reduce_none,
+  0, 100, :_reduce_none,
+  2, 100, :_reduce_none,
+  1, 102, :_reduce_none,
+  1, 102, :_reduce_none,
+  1, 102, :_reduce_none ]
 
 racc_reduce_n = 62
 
@@ -167,60 +180,99 @@ racc_shift_n = 92
 racc_token_table = {
   false => 0,
   :error => 1,
-  "instrument:" => 2,
-  "time signature:" => 3,
-  "/" => 4,
-  "key:" => 5,
-  "length:" => 6,
-  "difficulty:" => 7,
-  "soprano recorder" => 8,
-  "alto recorder" => 9,
-  "concert flute" => 10,
-  "oboe" => 11,
-  "bassoon" => 12,
-  "violin" => 13,
-  "cello" => 14,
-  "guitar" => 15,
-  "piano" => 16,
-  "major" => 17,
-  "minor" => 18,
-  "Ab" => 19,
-  "A" => 20,
-  "A#" => 21,
-  "Bb" => 22,
-  "B" => 23,
-  "B#" => 24,
-  "Cb" => 25,
-  "C" => 26,
-  "C#" => 27,
-  "Db" => 28,
-  "D" => 29,
-  "D#" => 30,
-  "Eb" => 31,
-  "E" => 32,
-  "E#" => 33,
-  "Fb" => 34,
-  "F" => 35,
-  "F#" => 36,
-  "Gb" => 37,
-  "G" => 38,
-  "G#" => 39,
-  "0" => 40,
-  "1" => 41,
-  "2" => 42,
-  "3" => 43,
-  "4" => 44,
-  "5" => 45,
-  "6" => 46,
-  "7" => 47,
-  "8" => 48,
-  "9" => 49,
-  " " => 50,
-  "\n" => 51,
-  "\r" => 52,
-  "\r\n" => 53 }
+  :AFLAT => 2,
+  :ANAT => 3,
+  :ASHARP => 4,
+  :BFLAT => 5,
+  :BNAT => 6,
+  :BSHARP => 7,
+  :CFLAT => 8,
+  :CNAT => 9,
+  :DFLAT => 10,
+  :DNAT => 11,
+  :DSHARP => 12,
+  :EFLAT => 13,
+  :ENAT => 14,
+  :FFLAT => 15,
+  :FNAT => 16,
+  :FSHARP => 17,
+  :GFLAT => 18,
+  :GNAT => 19,
+  :GSHARP => 20,
+  :ZERO => 21,
+  :ONE => 22,
+  :TWO => 23,
+  :THREE => 24,
+  :FOUR => 25,
+  :FIVE => 26,
+  :SIX => 27,
+  :SEVEN => 28,
+  :EIGHT => 29,
+  :NINE => 30,
+  :SOPRECORDER => 31,
+  :ALTRECORDER => 32,
+  :CONCFLUTE => 33,
+  :OBOE => 34,
+  :BASSOON => 35,
+  :VIOLIN => 36,
+  :GUITAR => 37,
+  :PIANO => 38,
+  :MAJOR => 39,
+  :MINOR => 40,
+  "instrument:" => 41,
+  "time signature:" => 42,
+  "/" => 43,
+  "key:" => 44,
+  "length:" => 45,
+  "difficulty:" => 46,
+  "soprano recorder" => 47,
+  "alto recorder" => 48,
+  "concert flute" => 49,
+  "oboe" => 50,
+  "bassoon" => 51,
+  "violin" => 52,
+  "cello" => 53,
+  "guitar" => 54,
+  "piano" => 55,
+  "major" => 56,
+  "minor" => 57,
+  "Ab" => 58,
+  "A" => 59,
+  "A#" => 60,
+  "Bb" => 61,
+  "B" => 62,
+  "B#" => 63,
+  "Cb" => 64,
+  "C" => 65,
+  "C#" => 66,
+  "Db" => 67,
+  "D" => 68,
+  "D#" => 69,
+  "Eb" => 70,
+  "E" => 71,
+  "E#" => 72,
+  "Fb" => 73,
+  "F" => 74,
+  "F#" => 75,
+  "Gb" => 76,
+  "G" => 77,
+  "G#" => 78,
+  "0" => 79,
+  "1" => 80,
+  "2" => 81,
+  "3" => 82,
+  "4" => 83,
+  "5" => 84,
+  "6" => 85,
+  "7" => 86,
+  "8" => 87,
+  "9" => 88,
+  " " => 89,
+  "\n" => 90,
+  "\r" => 91,
+  "\r\n" => 92 }
 
-racc_nt_base = 54
+racc_nt_base = 93
 
 racc_use_result_var = true
 
@@ -243,6 +295,45 @@ Racc_arg = [
 Racc_token_to_s_table = [
   "$end",
   "error",
+  "AFLAT",
+  "ANAT",
+  "ASHARP",
+  "BFLAT",
+  "BNAT",
+  "BSHARP",
+  "CFLAT",
+  "CNAT",
+  "DFLAT",
+  "DNAT",
+  "DSHARP",
+  "EFLAT",
+  "ENAT",
+  "FFLAT",
+  "FNAT",
+  "FSHARP",
+  "GFLAT",
+  "GNAT",
+  "GSHARP",
+  "ZERO",
+  "ONE",
+  "TWO",
+  "THREE",
+  "FOUR",
+  "FIVE",
+  "SIX",
+  "SEVEN",
+  "EIGHT",
+  "NINE",
+  "SOPRECORDER",
+  "ALTRECORDER",
+  "CONCFLUTE",
+  "OBOE",
+  "BASSOON",
+  "VIOLIN",
+  "GUITAR",
+  "PIANO",
+  "MAJOR",
+  "MINOR",
   "\"instrument:\"",
   "\"time signature:\"",
   "\"/\"",
@@ -316,7 +407,7 @@ Racc_debug_parser = false
 
 # reduce 0 omitted
 
-module_eval(<<'.,.,', 'options.y.rb', 3)
+module_eval(<<'.,.,', 'options.y.rb', 16)
   def _reduce_1(val, _values, result)
      result = val 
     result
@@ -325,63 +416,63 @@ module_eval(<<'.,.,', 'options.y.rb', 3)
 
 # reduce 2 omitted
 
-module_eval(<<'.,.,', 'options.y.rb', 6)
+module_eval(<<'.,.,', 'options.y.rb', 19)
   def _reduce_3(val, _values, result)
      result = val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 8)
+module_eval(<<'.,.,', 'options.y.rb', 21)
   def _reduce_4(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 9)
+module_eval(<<'.,.,', 'options.y.rb', 22)
   def _reduce_5(val, _values, result)
      result = val[3] + '/' + val[5] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 11)
+module_eval(<<'.,.,', 'options.y.rb', 24)
   def _reduce_6(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 12)
+module_eval(<<'.,.,', 'options.y.rb', 25)
   def _reduce_7(val, _values, result)
      result = val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 14)
+module_eval(<<'.,.,', 'options.y.rb', 27)
   def _reduce_8(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 15)
+module_eval(<<'.,.,', 'options.y.rb', 28)
   def _reduce_9(val, _values, result)
      result = val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 17)
+module_eval(<<'.,.,', 'options.y.rb', 30)
   def _reduce_10(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'options.y.rb', 18)
+module_eval(<<'.,.,', 'options.y.rb', 31)
   def _reduce_11(val, _values, result)
      result = val[3] 
     result

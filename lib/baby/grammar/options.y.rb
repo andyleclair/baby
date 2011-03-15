@@ -1,9 +1,22 @@
 class OptionsParser
 
+	# keys
+	token AFLAT ANAT ASHARP BFLAT BNAT BSHARP CFLAT CNAT DFLAT DNAT
+	token DSHARP EFLAT ENAT FFLAT FNAT FSHARP GFLAT GNAT GSHARP
+	
+	# digits
+	token ZERO ONE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE
+	
+	# instruments
+	token SOPRECORDER ALTRECORDER CONCFLUTE OBOE BASSOON VIOLIN GUITAR PIANO
+	
+	# modes
+	token MAJOR MINOR
+
 	rule
 		input: instrument_spec time_spec key_spec length_spec difficulty_spec { result = val }
 		
-		instrument_spec: 
+		instrument_spec: { result = Options.new }
 			| whitespace 'instrument:' whitespace instr whitespace ls { result = val[3] }
 
 		time_spec: { result = [] }
@@ -46,4 +59,16 @@ class OptionsParser
 
 		ls: "\u000A" | "\u000D" | "\u000D\u000A"
 
+end
+
+---- inner
+
+def parse(filename)
+	input = IO.readlines(filename)
+	@tokens = input
+	do_parse
+end
+
+def next_token
+	@tokens.shift
 end
