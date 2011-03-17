@@ -2,9 +2,8 @@
 require 'baby/instrument'
 Dir[File.join('lib', 'baby', 'instruments', '*.rb')].each {|instr| load instr} 
 
-require 'baby/generator'
 require 'baby/lilypond'
-require 'citrus'
+require 'baby/options'
 require 'optparse'
 
 class Baby
