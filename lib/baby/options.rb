@@ -1,3 +1,5 @@
+require 'pp'
+
 class Options
 
 	attr_accessor :instrument, :time_sig, :key, :length, :difficulty
@@ -16,7 +18,8 @@ class Options
 
 	def self.parse(filename)
 		opts = Options.new	# gets default vals
-		raw_lines = IO.readlines(filename)
+		raw_text = IO.read(filename)
+		raw_lines = raw_text.split(/[\r\n(\r\n)]/)
 		raw_lines.each_with_index do |line, i|
 			line.strip! # remove whitespace
 			words = line.split(':')
@@ -41,7 +44,7 @@ class Options
 	end
 
 	def self.parse_key(keystr)
-		key_arr = keystr.split(' ')
-		{:key => key_arr[0].downcase, :mode => key_arr[1]}
+		key_arr = /([A-F]#?b?)(major|minor)?/.match(keystr)
+		{:key => key_arr[1].downcase, :mode => key_arr[2]}
 	end
 end
