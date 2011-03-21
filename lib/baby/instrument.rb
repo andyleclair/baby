@@ -38,8 +38,10 @@ NOTES
         end
         
     def self.staff_header(params = {})
+    keystring = params[:key][:key]
+    keystring += " \\" + params[:key][:mode] if params[:key][:mode]
         <<HEADER
-\\key #{ params[:key][:key] } \\#{ params[:key][:mode] }
+\\key #{ keystring }
     \\time #{ params[:time_sig] }
 HEADER
     end
