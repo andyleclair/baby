@@ -50,7 +50,7 @@ class Options
     hash = {}
     self.instance_variables.each do |var|
       name = var.gsub(/@/, '')
-      hash[name] = self.instance_variable_get(var)
+      hash[name.to_sym] = self.instance_variable_get(var)
     end
     hash
   end

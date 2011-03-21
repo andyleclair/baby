@@ -14,7 +14,7 @@ class Generator
 			#override.call(:key, Options.parse_key(copts[:set_key])) if copts.key?(:set_key)
 			#override.
 			
-			generate!(outname, options)
+			generate!(outname, options.to_hash())
     end
 
     def self.generate!(outfile, options)
