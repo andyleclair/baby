@@ -1,7 +1,7 @@
 class LilyPond
     VERSION = "2.12.2"
 
-    def self.create_doc(params, instrument)
+    def self.create_doc(options, instrument)
 
 <<SCORE
 \\header {
@@ -14,11 +14,11 @@ class LilyPond
 \\version "#{ VERSION }"
 
 global = {
-    \\tempo 4 = #{ params[:tempo] }
-    \\time #{ params[:time] }
+    \\tempo 4 = 120
+    \\time #{ options[:time_sig] }
 }
 
-#{ instrument.generate(params) } 
+#{ instrument.generate(options) } 
 
 SCORE
     end

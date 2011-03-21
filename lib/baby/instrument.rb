@@ -27,7 +27,7 @@ class Instrument
 
         def self.generate(params = {})
                 staff_header = self.staff_header(params)
-                notes = generate_notes(params.merge({:notes => range(params[:range])}))
+                notes = generate_notes(params.merge({:notes => range('full')}))
                 <<NOTES
 \\new Staff {
     \\clef "#{ self::CLEF }"
@@ -40,13 +40,13 @@ NOTES
     def self.staff_header(params = {})
         <<HEADER
 \\key #{ params[:key][:key] } \\#{ params[:key][:mode] }
-    \\time #{ params[:time] }
+    \\time #{ params[:time_sig] }
 HEADER
     end
 
     def self.generate_notes(params = {})
         notes_per_bar = params[:time_sig][0].chr.to_i
-        bars = params[:bars].to_i
+        bars = params[:length].to_i
         score = ""
         current_range = params[:notes] # pased directly; array of symbols
         bars.times do |num|
