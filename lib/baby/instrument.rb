@@ -66,7 +66,7 @@ class Instrument
       pitch = notes[rand(notes.length)]
       length = generate_length(options[:difficulty])
 
-      length = 0.5 if length > notes_per_bar # just a hack for now
+      length = notes_per_bar.to_f if length > notes_per_bar # just a hack for now
       
       measure_notes << pitch
       measure << pitch << qtimeof(length).to_s << " "
@@ -80,18 +80,16 @@ class Instrument
   def self.generate_length(difficulty)
     r = rand * difficulty
     # result = "length, in number of quarter notes time"
-    if r < 5
+    if r < 5.0
       4.0
-    elsif r < 15
+    elsif r < 15.0
       2.0
-    elsif r < 50
+    elsif r < 50.0
       1.0
-    elsif r < 60
+    elsif r < 60.0
       0.5
-    elsif r < 75
-      0.25
     else
-      0.0125
+      0.25
     end
   end
 
