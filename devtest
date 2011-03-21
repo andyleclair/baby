@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+./c4500 options.baby out.txt
+lilypond out.txt 
+mv out.pdf ~/.www/
+
