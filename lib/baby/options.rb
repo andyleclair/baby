@@ -42,7 +42,9 @@ class Options
   end
 
   def self.parse_key(keystr)
-    key_arr = /([A-F]#?b?)(major|minor)?/.match(keystr)
+    key_arr = /([A-F]#?b?) +(major|minor)?/.match(keystr)
+    puts key_arr[1]
+    puts key_arr[2]
     {:key => key_arr[1].downcase, :mode => key_arr[2]}
   end
 
