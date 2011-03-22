@@ -12,6 +12,9 @@ class Instrument
 
     NAME = 'derp!'
 
+    @@last_pitch = ''
+    last_length = ''
+
     def self.range(range = 'full')
         case range
             when 'low'
@@ -62,8 +65,14 @@ HEADER
     
     def self.generate_measure(notes_per_bar = 0.0, notes = {}, complexity = {})
         measure = ""
+        @@last_pitch = rand(notes.length) if @@last_pitch == ''
         while notes_per_bar > 0.0 do
-            pitch = notes[rand(notes.length)]
+            pitchnum = rand(complexity.pitch_delta)
+            pitchnum = (pitchnum * -1) if rand(0) < 0.5
+            @@last_pitch = @@last_pitch + pitchnum
+            @@last_pitch = notes.length-1 if @@last_pitch > (notes.length-1)
+            @@last_pitch = 0 if @@last_pitch < 0
+            pitch = notes[@@last_pitch]
             length = generate_length(complexity.len_probs)
                         
             length = 1.0 if length > notes_per_bar
