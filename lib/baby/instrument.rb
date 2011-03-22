@@ -68,6 +68,7 @@ HEADER
                         
             length = 1.0 if length > notes_per_bar
             length = 0.5 if length > notes_per_bar # just a hack for now
+            length = 0.25 if length > notes_per_bar
                                 
             measure << pitch << qtimeof(length).to_s << " "
             
@@ -87,8 +88,10 @@ HEADER
           2.0
         elsif r < (probs[2]+probs[1]+probs[0])
           1.0
-        else
+        elsif r < (probs[3]+probs[2]+probs[1]+probs[0])
           0.5
+        else
+          0.25
         end
 
     end
