@@ -41,10 +41,9 @@ NOTES
         end
         
     def self.staff_header(params = {})
-    keystring = params[:key][:key]
-    keystring += " \\" + params[:key][:mode] if params[:key][:mode]
+    params[:key][:mode] = "major" unless params[:key][:mode]
         <<HEADER
-\\key #{ keystring }
+\\key #{ params[:key][:key] } \\#{ params[:key][:mode] }
     \\time #{ params[:time_sig] }
 HEADER
     end
