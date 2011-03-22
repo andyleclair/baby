@@ -73,7 +73,8 @@ HEADER
             @@last_pitch = 0 if @@last_pitch < 0
             pitch = notes[@@last_pitch]
             length = generate_length(complexity.len_probs)
-                        
+            
+            length = 2.0 if length > notes_per_bar
             length = 1.0 if length > notes_per_bar
             length = 0.5 if length > notes_per_bar # just a hack for now
             length = 0.25 if length > notes_per_bar
