@@ -11,7 +11,8 @@ class Instrument
 
   CLEF = nil
 
-  NAME = nil
+  @@last_pitch = ''
+  last_length = ''
 
   def self.range(range = 'full')
     case range
@@ -47,28 +48,36 @@ class Instrument
     HEADER
   end
 
-  def self.generate_notes(options = {})
-    notes_per_bar = options[:time_sig][0].chr.to_i
-    bars = options[:length].to_i
+  def self.generate_notes(params = {})
+    notes_per_bar = params[:time_sig][0].chr.to_i
+    bars = params[:length].to_i
     score = ""
-    current_range = options[:notes] # pased directly; array of symbols
+    current_range = params[:notes] # pased directly; array of symbols
+    complexity = Complexity.from_index(params[:difficulty])
     bars.times do |num|
-      score << generate_measure(notes_per_bar,current_range, options)
+      score << generate_measure(notes_per_bar,current_range,complexity);
       score << "\n    " unless num+1 == bars
     end
+
     score
   end
 
-  def self.generate_measure(notes_per_bar = 0.0, notes = self::FULL_RANGE, options = {})
+  def self.generate_measure(notes_per_bar = 0.0, notes = {}, complexity = {})
     measure = ""
-    measure_notes = []
+    @@last_pitch = rand(notes.length) if @@last_pitch == ''
     while notes_per_bar > 0.0 do
-      pitch = notes[rand(notes.length)]
-      length = generate_length(options[:difficulty])
+      pitchnum = rand(complexity.pitch_delta)
+      pitchnum = (pitchnum * -1) if rand(0) < 0.5
+      @@last_pitch = @@last_pitch + pitchnum
+      @@last_pitch = notes.length-1 if @@last_pitch > (notes.length-1)
+      @@last_pitch = 0 if @@last_pitch < 0
+      pitch = notes[@@last_pitch]
+      length = generate_length(complexity.len_probs)
 
-      length = notes_per_bar.to_f if length > notes_per_bar # just a hack for now
-      
-      measure_notes << pitch
+      length = 1.0 if length > notes_per_bar
+      length = 0.5 if length > notes_per_bar # just a hack for now
+      length = 0.25 if length > notes_per_bar
+
       measure << pitch << qtimeof(length).to_s << " "
 
       notes_per_bar = notes_per_bar.to_f - length.to_f
@@ -77,20 +86,22 @@ class Instrument
     measure
   end
 
-  def self.generate_length(difficulty)
-    r = rand * difficulty
+  def self.generate_length(probs)
+    r = rand(0)
     # result = "length, in number of quarter notes time"
-    if r < 5.0
+
+    if r < probs[0]
       4.0
-    elsif r < 15.0
+    elsif r < (probs[1]+probs[0])
       2.0
-    elsif r < 50.0
+    elsif r < (probs[2]+probs[1]+probs[0])
       1.0
-    elsif r < 60.0
+    elsif r < (probs[3]+probs[2]+probs[1]+probs[0])
       0.5
     else
       0.25
     end
+
   end
 
   def self.qtimeof(time)
