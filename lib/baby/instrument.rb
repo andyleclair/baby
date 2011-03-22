@@ -51,20 +51,22 @@ HEADER
         bars = params[:length].to_i
         score = ""
         current_range = params[:notes] # pased directly; array of symbols
+        complexity = Complexity.from_index(params[:difficulty])
         bars.times do |num|
-            score << generate_measure(notes_per_bar,current_range);
+            score << generate_measure(notes_per_bar,current_range,complexity);
             score << "\n    " unless num+1 == bars
         end
 
         score
     end
     
-    def self.generate_measure(notes_per_bar = 0.0, notes = {})
+    def self.generate_measure(notes_per_bar = 0.0, notes = {}, complexity = {})
         measure = ""
         while notes_per_bar > 0.0 do
             pitch = notes[rand(notes.length)]
-            length = generate_length()
+            length = generate_length(complexity.len_probs)
                         
+            length = 1.0 if length > notes_per_bar
             length = 0.5 if length > notes_per_bar # just a hack for now
                                 
             measure << pitch << qtimeof(length).to_s << " "
@@ -75,18 +77,20 @@ HEADER
         measure
     end
     
-    def self.generate_length()
+    def self.generate_length(probs)
         r = rand(0)
         # result = "length, in number of quarter notes time"
-        if r < 0.2
-            2.0
-        elsif r < 0.25
-            4.0
-        elsif r < 0.3
-            0.5
+
+        if r < probs[0]
+          4.0
+        elsif r < (probs[1]+probs[0])
+          2.0
+        elsif r < (probs[2]+probs[1]+probs[0])
+          1.0
         else
-            1.0
+          0.5
         end
+
     end
     
     def self.qtimeof(time)
