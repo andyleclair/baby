@@ -7,6 +7,7 @@ require 'baby/options'
 require 'baby/generator'
 require 'baby/complexity'
 require 'optparse'
+require 'erb'
 
 class Baby
   class Got
