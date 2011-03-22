@@ -1,13 +1,13 @@
 class SopranoRecorder < Instrument
     LO_NOTE = "c'"
-    HI_NOTE = "d''"
+    HI_NOTE = "c'''"
 
-    LO_RANGE   = %w{ c' }
-    MID_RANGE  = %w{ c' d' e' f' g' a' b' c'' }
-    HI_RANGE   = %w{ c'' d'' e'' f'' g'' a'' b'' c''' d''' }
+    LO_RANGE   = %w{ c' d' e' f' g' a' b' c''}
+    MID_RANGE  = %w{ c'' d'' e'' f'' g'' }
+    HI_RANGE   = %w{ g'' a'' b'' c''' }
     FULL_RANGE = LO_RANGE.concat(MID_RANGE).concat(HI_RANGE)
 
-    CLEF = 'tenor'
+    CLEF = 'G^8'
     
     NAME = 'Soprano Recorder'
 end
