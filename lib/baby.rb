@@ -36,7 +36,7 @@ class Baby
 	  COPTS[:set_length] = length
 	end
         opts.on('-s', '--use-seed SEED','Provide a seed for this run' ) do|seed|
-          COPTS[:seed] = seed
+          srand(Integer(seed))
         end
 	opts.on('-h','--help','Display this screen') do
 	  puts opts
@@ -53,7 +53,6 @@ class Baby
 	  Generator.run!(COPTS, *args)
 	else
 	  puts RUNSYNTAX
-	  puts COPTS
 	end
 	return 0
       end
