@@ -37,7 +37,7 @@ class Baby
 	  COPTS[:length] = length
 	end
         opts.on('--set-difficulty DIFFICULTY', 'Force `difficulty\' parameter' ) do |difficulty|
-          COPTS[:difficulty] = difficulty
+          COPTS[:difficulty] = Integer(difficulty)
         end
         opts.on('-s', '--use-seed SEED','Provide a seed for this run' ) do|seed|
           srand(Integer(seed))
