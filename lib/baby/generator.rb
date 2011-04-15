@@ -6,7 +6,7 @@ class Generator
     inname, outname = args
     options = Options.parse(inname)
 
-    generate!(outname, options.to_hash)
+    generate!(outname, options.to_hash.merge(copts))
   end
 
   def self.generate!(outfile, options)
