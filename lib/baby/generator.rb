@@ -1,5 +1,4 @@
 class Generator
-
   def self.run!(copts = {}, *args)
   # Entry point (inner)
     inname, outname = args

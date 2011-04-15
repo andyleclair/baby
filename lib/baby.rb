@@ -54,7 +54,7 @@ class Baby
       def self.run!(*args)
 	case args.length
 	when 2
-	  Generator.run!(*args)
+	  Generator.run!(COPTS, *args)
 	else
 	  puts RUNSYNTAX
 	end
