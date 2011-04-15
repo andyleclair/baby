@@ -36,7 +36,7 @@ class Music
       length = 0.5 if length > notes_per_bar # just a hack for now
       length = 0.25 if length > notes_per_bar
 
-      measure << pitch << qtimeof(length).to_s << " "
+      measure << "\t" <<  pitch << qtimeof(length).to_s << " "
 
       notes_per_bar = notes_per_bar.to_f - length.to_f
     end

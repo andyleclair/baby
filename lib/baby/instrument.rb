@@ -32,17 +32,14 @@ class Instrument
   \\clef "#{ self::CLEF }"
   #{ staff_header } 
   #{ notes }
-  }
+}
     NOTES
   end
 
   def self.staff_header(options = {})
     keystring = options[:key][:key]
     keystring += " \\" + options[:key][:mode] if options[:key][:mode]
-    <<-HEADER
-\\key #{ keystring }
-  \\time #{ options[:time_sig] }
-    HEADER
+    "\\key #{ keystring }"
   end
 
 end
