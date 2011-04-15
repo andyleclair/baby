@@ -36,7 +36,7 @@ class Baby
 	opts.on('--set-length LENGTH', 'Force `length\' parameter' ) do|length|
 	  COPTS[:length] = length
 	end
-        opts.on('--set-difficulty DIFFICULTY', 'Force `difficulty\' parameter' ) do |parameter|
+        opts.on('--set-difficulty DIFFICULTY', 'Force `difficulty\' parameter' ) do |difficulty|
           COPTS[:difficulty] = difficulty
         end
         opts.on('-s', '--use-seed SEED','Provide a seed for this run' ) do|seed|
