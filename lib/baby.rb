@@ -6,11 +6,14 @@ require 'baby/lilypond'
 require 'baby/options'
 require 'baby/generator'
 require 'baby/complexity'
+require 'baby/music'
 require 'erb'
 
 class Baby
   class Got
     class Bach
+      # Entry point (client)
+
       def self.run!(*args)
 	case args.length
 	when 2

@@ -1,3 +1,0 @@
-[submodule "vendor/citrus"]
-	path = vendor/citrus
-	url = https://github.com/mjijackson/citrus.git

@@ -25,8 +25,8 @@ class Piano < Instrument
     NAME = 'Piano'
     
     def self.generate(params = {})
-        treb_notes = generate_notes(params.merge({:notes => BASIC_TREB}))
-        bass_notes = generate_notes(params.merge({:notes => BASIC_BASS}))
+        treb_notes = Music.generate_notes(params.merge({:notes => BASIC_TREB}))
+        bass_notes = Music.generate_notes(params.merge({:notes => BASIC_BASS}))
         
         staff_header = self.staff_header(params)
 
@@ -34,12 +34,12 @@ class Piano < Instrument
 \\new PianoStaff <<
     \\new Staff { 
     \\clef treble
-    #{ staff_header }
+  #{ staff_header }
     #{ treb_notes  }
     }
     \\new Staff { 
     \\clef bass 
-    #{ staff_header }
+  #{ staff_header }
     #{ bass_notes }
     }
 >>

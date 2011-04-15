@@ -1,6 +1,7 @@
 class Generator
 
   def self.run!(*args)
+  # Entry point (inner)
     inname, outname = args
     options = Options.parse(inname).to_hash
 
