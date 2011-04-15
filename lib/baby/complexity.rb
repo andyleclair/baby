@@ -1,5 +1,10 @@
 class Complexity
-  attr_accessor :pitch_delta, :len_probs # [whole,half,quarter,eighth,sixteeth]
+  attr_accessor :pitch_delta, :len_probs 
+  
+  # Defines difficulty levels.
+
+  # :pitch_delta : upper limit (natural)
+  #   :len_probs : [whole,half,quarter,eighth,sixteeth]
 
   def self.from_index(n)
     c = Complexity.new

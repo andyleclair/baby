@@ -6,12 +6,15 @@ require 'baby/lilypond'
 require 'baby/options'
 require 'baby/generator'
 require 'baby/complexity'
+require 'baby/music'
 require 'optparse'
 require 'erb'
 
 class Baby
   class Got
     class Bach
+
+      # Entry point (client)
 
       COPTS = {}
       optparse = OptionParser.new do|opts|
@@ -32,6 +35,9 @@ class Baby
 	opts.on('--set-length LENGTH', 'Force `length\' parameter' ) do|length|
 	  COPTS[:set_length] = length
 	end
+        opts.on('-s', '--use-seed SEED','Provide a seed for this run' ) do|seed|
+          COPTS[:seed] = seed
+        end
 	opts.on('-h','--help','Display this screen') do
 	  puts opts
 	  exit

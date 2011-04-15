@@ -6,7 +6,7 @@ class Options
                  time_sig = '4/4', 
                  key = {:key => 'c', :mode => 'major'}, 
                  length = 32, 
-                 difficulty = 20)
+                 difficulty = 20) # init with defaults
     @instrument = instrument
     @time_sig = time_sig
     @key = key
@@ -17,7 +17,7 @@ class Options
   def self.parse(filename)
     opts = Options.new	# gets default vals
     raw_text = IO.read(filename)
-    #hack'd it
+    # hack'd it
     raw_text.gsub!("\r\n","\n")
     raw_text.gsub!("\r","\n")
     raw_lines = raw_text.split(/[\n]/)
@@ -38,7 +38,7 @@ class Options
       when 'difficulty'
         opts.difficulty = param.to_i
       else
-        puts "Parse error on line #{ i } with #{ line }, default parameter will be used instead."
+        puts "Parse error on line #{ i } with #{ line }. A default parameter may be used instead."
       end
     end
     opts
