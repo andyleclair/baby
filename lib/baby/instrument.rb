@@ -39,7 +39,7 @@ class Instrument
   def self.staff_header(options = {})
     keystring = options[:key][:key]
     keystring += " \\" + options[:key][:mode] if options[:key][:mode]
-    "\\key #{ keystring }"
+    "\\time #{ options[:time_sig] }" + "\n" + "  \\key #{ keystring }"
   end
 
 end
