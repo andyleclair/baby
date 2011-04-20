@@ -26,7 +26,7 @@ class Instrument
   # override me for special Instruments
   def self.generate(options = {})
     staff_header = self.staff_header(options)
-    notes = Music.generate_notes(options.merge({:notes => range('full')}))
+    notes = Music.generate_notes(self,options.merge({:notes => range('full')}))
     <<-NOTES
 \\new Staff {
   \\clef "#{ self::CLEF }"
