@@ -5,7 +5,7 @@ class Music
 
   # generate music for the given params
   def self.generate_notes(instr,params = {})
-    @@start_note = get_mid_note_index(instr,params[:notes],params[:key][:key])
+    @@start_note = get_mid_note_index(instr,params[:notes],params[:key][:key][0,1])
     #puts @@start_note
     #puts instr.range('full').at(@@start_note)
     notes_per_bar = params[:time_sig][0].chr.to_i
@@ -15,7 +15,7 @@ class Music
     complexity = Complexity.from_index(params[:difficulty])
     bars.times do |num|
       # generation continues by measures, with global memory
-      score << generate_measure!(notes_per_bar,current_range,complexity);
+      score << generate_measure!(notes_per_bar,current_range,complexity,params[:key][:key][0,1]);
       score << "\n  " unless num+1 == bars
     end
 
@@ -23,7 +23,7 @@ class Music
   end
 
  # generate a single measure of notes
- def self.generate_measure!(notes_per_bar = 0.0, notes = {}, complexity = {})
+ def self.generate_measure!(notes_per_bar = 0.0, notes = {}, complexity = {}, key = "C")
     measure = ""
     # seed the initial note
     #@@last_pitch = @@start_note if @@last_pitch == ''
@@ -37,7 +37,9 @@ class Music
         @@last_pitch = notes.length-1 if @@last_pitch > (notes.length-1)
         @@last_pitch = 0 if @@last_pitch < 0
       end
-      pitch = notes[@@last_pitch]
+      pitch = "*"+notes[@@last_pitch]
+      scale = Key.scale(key)
+      pitch.gsub!("*"+pitch[1,1],scale.at(@@last_pitch % 7))
       length = generate_length(complexity.len_probs)
 
       length = 1.0 if length > notes_per_bar

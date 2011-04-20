@@ -7,6 +7,7 @@ require 'baby/options'
 require 'baby/generator'
 require 'baby/complexity'
 require 'baby/music'
+require 'baby/key'
 require 'erb'
 require 'optparse'
 
