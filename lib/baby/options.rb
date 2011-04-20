@@ -46,7 +46,8 @@ class Options
 
   def self.parse_key(keystr)
     key_arr = /([A-G]#?b?) *(major|minor)?/.match(keystr)
-    {:key => key_arr[1].sub("b","es").sub("#","is").downcase, :mode => key_arr[2]}
+    if key_arr[2]==nil then key="major" else key=key_arr[2] end
+    {:key => key_arr[1].sub("b","es").sub("#","is").downcase, :mode => key}
   end
 
   def to_hash
